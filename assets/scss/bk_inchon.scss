@@ -189,7 +189,7 @@
         height: 30px;
         right: 20px;
         top:20px;
-        background: url(/assets/img/btn_closed.svg) no-repeat 0 0 / cover;
+        background: url(../img/btn_closed.svg) no-repeat 0 0 / cover;
         @include vw(right, 20px);
         @include vw(top, 20px);
         @include vw(width, 30px);
