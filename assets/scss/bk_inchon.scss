@@ -1,0 +1,198 @@
+@import "reset";
+@import "function";
+.bk-buskerList {
+    position: relative;
+    width: 100%;
+    max-width: 768px;
+    margin: 0 auto;
+    padding-top: 85px;
+    letter-spacing: -0.05em;
+    
+    @include vw(padding-top, 80px);
+    &__tit {
+        margin: 0 auto;
+        height: fit-content;        
+        display: flex;
+        align-items: center;
+        width: 232px;
+        @include vw(width, 232px);
+    }
+    &__container {        
+        position: relative;
+        margin: 70px 0;
+        padding:0 26px;
+        @include vw(padding-left, 26px);
+        @include vw(padding-right, 26px);
+        @include vw(margin-top, 70px);
+        // @media screen and (max-width: 768px) {
+        //     overflow-y: auto;
+        //     height:calc(100vh - 180px);
+        //     padding:0 26px 60px;
+        // }
+        &::before {
+            content: '';
+            position: absolute;
+            top:0;
+            left: 62px;
+            width: 1px;
+            border-left: 1px dashed #464646;
+            opacity: .5;
+            @include vw(width, 1px);
+            @include vw(left, 62px);
+            height: 100%;
+        }
+    }
+    &__item {
+        position: relative;
+        padding-left: 93px;
+        
+        @include vw(padding-left, 93px);
+        &:not(:first-child) {
+            margin-top: 70px;
+            @include vw(margin-top, 70px);
+        }
+        &:nth-child(even) {
+            .item__week {
+                color: #4A7D88;
+            }
+            .item__cate {
+                background-color: #4A7D88;
+            }
+            
+        }
+        .item {
+            
+            &__date {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                left:0;
+                top:0;
+                width: 70px;        
+                height: 70px;
+                border: 2px solid #4A7D88;
+                border-radius: 12px;
+                @include vw(width, 70px);
+                @include vw(height, 70px);
+                @include poppins;
+                background-color: #fff;
+            }
+            &__day {
+                @include poppins;
+                font-size: 20px;
+                font-weight: 700;
+                @include vw(font-size,20px);
+                color:#000;
+            }
+            &__week {
+                line-height: 1;
+                color: #81C2D0;
+                font-size: 20px;
+                font-weight: 700;
+                @include vw(font-size,20px);
+            }
+            &__cate {                
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: max-content;
+                min-width: 70px;
+                padding:0 12px;
+                height: 27px;
+                font-size: 15px;
+                color:#fff;
+                font-weight: 500;
+                border-radius: 8px;
+                background-color: #81C2D0;
+                @include vw(min-width, 70px);
+                @include vw(height, 27px);
+                @include vw(font-size, 15px);
+                
+                span:not(:first-child) {
+                    position: relative;
+                    margin-left: 5px;
+                    padding-left: 7px;
+                    &::before {
+                        content: '';
+                        display: block;
+                        width: 2px;
+                        height: 2px;
+                        border-radius: 50%;
+                        background-color: #fff;
+                        position: absolute;
+                        left: 0;
+                        top: 50%;
+                    }
+                }
+            }
+            &__singer {
+                font-size: 28px;
+                font-weight: 700;
+                color:#111;
+                @include ellipse(1);
+                @include vw(font-size, 26px);
+                margin-bottom: 10px;
+                @include vw(margin-bottom, 10px);
+            }
+            &__place {                
+                letter-spacing: 0;
+                color:#a1a1a1;
+                padding-left: 30px;
+                font-size: 14px;
+                font-weight: 500;
+                line-height: 24px;
+                margin-bottom: 10px;
+                @include vw(padding-left, 30px);
+                @include vw(font-size, 14px);
+                @include vw(margin-bottom, 5px);
+                background-image: url(/assets/img/ico_place.svg);
+                background-repeat:  no-repeat;
+                background-position:  2px 0;
+                background-size:  20px;
+                @include vw(background-size, 18px);
+                @include vw(background-position-x, 1px);
+                @include vw(background-position-y, 1px);
+                @include vw(line-height, 24px);
+            }
+            &__time {
+                letter-spacing: 0;
+                color:#a1a1a1;
+                padding-left: 30px;
+                font-size: 14px;
+                font-weight: 500;
+                line-height: 24px;
+                @include poppins;
+                @include vw(padding-left, 30px);
+                @include vw(font-size, 14px);
+                background-image: url(/assets/img/ico_time.svg);
+                background-repeat:  no-repeat;
+                background-position:  0 0;
+                background-size:  24px;
+                @include vw(background-size, 20px);
+                @include vw(background-position-y, 1px);
+                @include vw(line-height, 24px);
+            }
+            
+        }
+        
+    }
+    
+}
+// 버튼
+.bk-btn {
+    &__closed {
+        position: absolute;
+        display: block;
+        width: 30px;
+        height: 30px;
+        right: 20px;
+        top:20px;
+        background: url(/assets/img/btn_closed.svg) no-repeat 0 0 / cover;
+        @include vw(right, 20px);
+        @include vw(top, 20px);
+        @include vw(width, 30px);
+        @include vw(height, 30px);
+    }
+}

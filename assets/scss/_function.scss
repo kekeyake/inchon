@@ -1,0 +1,36 @@
+$breakpoints-vw : 393;
+$breakpoints-target : 768;
+
+@function pxtovw-mo($target) {
+  $vw-content: ($breakpoints-vw * 0.01) * 1px;
+  $result: ();
+  $length: length($target);
+
+  @for $i from 1 through $length {
+    $result: append($result, nth($target, $i) / $vw-content + vw);
+  }
+
+  @return $result;
+}
+
+
+@mixin vw($value, $size, $flag:'false') {
+    @media (max-width: $breakpoints-target + 'px') {
+      @if($flag==true) {
+        #{$value}: pxtovw-mo($size) !important;
+      }
+      #{$value} : pxtovw-mo($size);
+    }
+}
+
+@mixin poppins() {
+    font-family: 'Poppins', sans-serif;
+}
+@mixin ellipse($line) {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    word-break: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: $line; // 원하는 라인수
+    -webkit-box-orient: vertical
+}

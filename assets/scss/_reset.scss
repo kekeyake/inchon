@@ -1,0 +1,68 @@
+@charset "utf-8";
+// Do not break Korean words
+:lang(ko) { word-break: keep-all;}
+
+// Reset img
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+// CSS Reset by [class]
+//[class] {
+//  margin: 0;
+//  padding: 0;
+//  box-sizing: border-box;
+//  list-style: none; // ol, ul
+//  border: 0; // button, table, fieldset, input, textarea, select, iframe
+//  background-color: transparent; // button, dialog, input, mark, meter, progress
+//  border-collapse: collapse; // table
+//  border-spacing: 0; // table
+//  -webkit-appearance: none;
+//  appearance: none; // button, input, textarea, select, meter, progress
+//}
+//[class]::before,
+//[class]::after { box-sizing: border-box; }
+//
+// CSS Reset by [class] - where() 선택자를 지원하는 프로젝트에서 아래 코드를 사용할 수 있음.
+[class] {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+[class]::before,
+[class]::after { box-sizing: border-box; }
+[class]:where(ol, ul) { list-style: none; }
+[class]:where(button, fieldset, iframe, input, select, textarea) { border: 0; }
+[class]:where(button, dialog, input, mark, meter, progress) { background-color: transparent; }
+[class]:where(table) {
+    border: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
+    table-layout: fixed;
+}
+[class]:where(button, input, meter, progress, select, textarea) {
+    -webkit-appearance: none;
+    appearance: none;
+    font-family: 'Poppins', 'Noto Sans KR', 'Apple SD Gothic Neo', Verdana, 'Malgun Gothic', dotum, sans-serif;
+}
+[class]:where(a,button) {
+    cursor: pointer;
+    text-decoration: none;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+.ko-KR {
+    font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', Verdana, 'Malgun Gothic', dotum, sans-serif;
+    word-break: keep-all;
+}
+// accessibility 대체 텍스트
+.a11y {
+    position: absolute;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+}
