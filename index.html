@@ -42,82 +42,12 @@
 <body class="ko-KR">
     <main class="bk-buskerList">
         <h1 class="bk-buskerList__tit"><img src="assets/img/logo_busking.png" alt="BUSKINGPlay"></h1>
+        <section class="bk-buskerList__date">
+            <label class="bk-buskerList__label" for="inputDate">Select Date</label>
+            <input type="date" class="bk-buskerList__input" id="inputDate" value="2022-10-01" onchange="sortBusker(this.value)">
+        </section>
         <ul class="bk-buskerList__container">
-            <li class="bk-buskerList__item item">
-                <div class="item__date">
-                    <p class="item__day">10/01</p>
-                    <p class="item__week">SAT</p>
-                </div>
-                <div class="item__cate">
-                    <span>어쿠스틱 기타연주</span>
-                </div>
-                <p class="item__singer">HLFBLD(하프블러드)</p>
-                <p class="item__place">아트플랫폼(중앙광장)</p>
-                <p class="item__time">02:00 PM</p>
-            </li>
-            <li class="bk-buskerList__item item">
-                <div class="item__date">
-                    <p class="item__day">10/01</p>
-                    <p class="item__week">SUN</p>
-                </div>
-                <div class="item__cate">
-                    <span>뮤지컬 갈라</span>
-                    <span>팝페라</span>
-                </div>
-                <p class="item__singer">HLFBLD(하프블러드)</p>
-                <p class="item__place">아트플랫폼(중앙광장)</p>
-                <p class="item__time">02:00 PM</p>
-            </li>
-            <li class="bk-buskerList__item item">
-                <div class="item__date">
-                    <p class="item__day">10/01</p>
-                    <p class="item__week">SAT</p>
-                </div>
-                <div class="item__cate">
-                    <span>어쿠스틱 기타연주</span>
-                </div>
-                <p class="item__singer">HLFBLD(하프블러드)</p>
-                <p class="item__place">아트플랫폼(중앙광장)</p>
-                <p class="item__time">02:00 PM</p>
-            </li>
-            <li class="bk-buskerList__item item">
-                <div class="item__date">
-                    <p class="item__day">10/01</p>
-                    <p class="item__week">SUN</p>
-                </div>
-                <div class="item__cate">
-                    <span>뮤지컬 갈라</span>
-                    <span>팝페라</span>
-                </div>
-                <p class="item__singer">HLFBLD(하프블러드)</p>
-                <p class="item__place">아트플랫폼(중앙광장)</p>
-                <p class="item__time">02:00 PM</p>
-            </li>
-            <li class="bk-buskerList__item item">
-                <div class="item__date">
-                    <p class="item__day">10/01</p>
-                    <p class="item__week">SAT</p>
-                </div>
-                <div class="item__cate">
-                    <span>어쿠스틱 기타연주</span>
-                </div>
-                <p class="item__singer">HLFBLD(하프블러드)</p>
-                <p class="item__place">아트플랫폼(중앙광장)</p>
-                <p class="item__time">02:00 PM</p>
-            </li>
-            <li class="bk-buskerList__item item">
-                <div class="item__date">
-                    <p class="item__day">10/01</p>
-                    <p class="item__week">SUN</p>
-                </div>
-                <div class="item__cate">
-                    <span>뮤지컬 갈라</span>
-                    <span>팝페라</span>
-                </div>
-                <p class="item__singer">HLFBLD(하프블러드)</p>
-                <p class="item__place">아트플랫폼(중앙광장)</p>
-                <p class="item__time">02:00 PM</p>
-            </li>
+            
         </ul>
         <button type="button" class="bk-btn__closed" onclick="fnCloseWindow();"><span class="a11y">창닫기</span></button>
     </main>

@@ -17,13 +17,52 @@
         width: 232px;
         @include vw(width, 232px);
     }
+    &__date {
+        display: flex;
+        align-items: center;
+        height: 40px;
+        margin:0 26px;
+        margin-top: 60px;
+        @include vw(margin-left, 26px);
+        @include vw(margin-right, 26px);
+        @include vw(margin-top, 60px);
+        @include vw(height, 40px);
+        border: 1px solid #ddd;
+        border-radius: 8px;
+    }
+    &__label {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        font-size: 15px;
+        padding:0 20px;
+        @include vw(font-size, 15px);
+        background-color: #eee;
+        @include poppins;
+    }
+    &__input {
+        height: 100%;
+        font-size: 15px;
+        padding-left: 10px;
+        @include vw(font-size, 15px);
+        
+    }
     &__container {        
         position: relative;
-        margin: 70px 0;
+        margin: 20px auto 60px;
         padding:0 26px;
+        width: 450px;
+        &.no-data {
+            &::before {
+                display: none;
+            }
+        }
+        @media screen and (max-width: 768px) {
+            width: 100%;
+        }
         @include vw(padding-left, 26px);
         @include vw(padding-right, 26px);
-        @include vw(margin-top, 70px);
+        @include vw(margin-top, 20px);
         // @media screen and (max-width: 768px) {
         //     overflow-y: auto;
         //     height:calc(100vh - 180px);
@@ -48,8 +87,8 @@
         
         @include vw(padding-left, 93px);
         &:not(:first-child) {
-            margin-top: 70px;
-            @include vw(margin-top, 70px);
+            margin-top: 50px;
+            @include vw(margin-top, 50px);
         }
         &:nth-child(even) {
             .item__week {
@@ -83,7 +122,7 @@
                 @include poppins;
                 font-size: 20px;
                 font-weight: 700;
-                @include vw(font-size,20px);
+                @include vw(font-size,18px);
                 color:#000;
             }
             &__week {
@@ -91,7 +130,7 @@
                 color: #81C2D0;
                 font-size: 20px;
                 font-weight: 700;
-                @include vw(font-size,20px);
+                @include vw(font-size,18px);
             }
             &__cate {                
                 display: flex;
@@ -101,14 +140,14 @@
                 min-width: 70px;
                 padding:0 12px;
                 height: 27px;
-                font-size: 15px;
+                font-size: 14px;
                 color:#fff;
                 font-weight: 500;
                 border-radius: 8px;
                 background-color: #81C2D0;
                 @include vw(min-width, 70px);
                 @include vw(height, 27px);
-                @include vw(font-size, 15px);
+                @include vw(font-size, 14px);
                 
                 span:not(:first-child) {
                     position: relative;
@@ -132,7 +171,7 @@
                 font-weight: 700;
                 color:#111;
                 @include ellipse(1);
-                @include vw(font-size, 26px);
+                @include vw(font-size, 22px);
                 margin-bottom: 10px;
                 @include vw(margin-bottom, 10px);
             }
@@ -145,7 +184,7 @@
                 line-height: 24px;
                 margin-bottom: 10px;
                 @include vw(padding-left, 30px);
-                @include vw(font-size, 14px);
+                @include vw(font-size, 17px);
                 @include vw(margin-bottom, 5px);
                 background-image: url(../img/ico_place.svg);
                 background-repeat:  no-repeat;
@@ -165,7 +204,7 @@
                 line-height: 24px;
                 @include poppins;
                 @include vw(padding-left, 30px);
-                @include vw(font-size, 14px);
+                @include vw(font-size, 17px);
                 background-image: url(../img/ico_time.svg);
                 background-repeat:  no-repeat;
                 background-position:  0 0;
