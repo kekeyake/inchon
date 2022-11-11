@@ -32,11 +32,15 @@ function displayList(buskerList) {
  function displayListSort(buskerList, thisDate) {
     const container = document.querySelector(".bk-buskerList__container");
 
-    container.innerHTML = buskerList.map((item) => {        
-        if (item.id === thisDate)
-            return createHTMLString(item);
-        return ;
-    }).join("");
+    let filterBuskerList = buskerList.filter(item => item.id === thisDate);
+    if(filterBuskerList.length < 1) {
+        container.classList.add('no-data');
+        container.innerHTML ='<li class="bk-buskerList__item">해당 날짜에 공연이 없습니다.</li>';
+        return;
+       
+    }
+    container.innerHTML = filterBuskerList.map((item) => createHTMLString(item)).join("");
+    container.classList.remove('no-data');
 }
 
 
@@ -65,12 +69,8 @@ function createHTMLString(item) {
 function sortBusker(date) {
     let thisDate = date;
     getJson().then((buskerList) => {
-        displayListSort(buskerList,thisDate);
+        displayListSort(buskerList, thisDate);
     });
-    // const container = document.querySelector(".bk-buskerList__container");
-    // container.innerHTML ='<li class="bk-buskerList__item">해당 날짜에 공연이 없습니다.</li>';
-    // container.classList.add('no-data');
-
 }
 document.addEventListener("DOMContentLoaded", async function () {
     
