@@ -17,7 +17,7 @@ function getJson() {
 }
 
 /**
- * 버스커리스트 화면에 보여주기
+ * 버스커리스트 처음 화면에 보여주기
  * 
  */
 function displayList(buskerList) {
@@ -31,7 +31,7 @@ function displayList(buskerList) {
  */
  function displayListSort(buskerList, thisDate) {
     const container = document.querySelector(".bk-buskerList__container");
-    
+
     container.innerHTML = buskerList.map((item) => {        
         if (item.id === thisDate)
             return createHTMLString(item);
@@ -39,12 +39,6 @@ function displayList(buskerList) {
     }).join("");
 }
 
-/**
- * 날짜 조건
- */
-function isToday(value) {
-    
-}
 
 /**
  * 버스커 리스트 생성
@@ -64,6 +58,7 @@ function createHTMLString(item) {
         <p class="item__time">${item.time}</p>
     </li>`;
 }
+
 /**
  * 날짜별 공연 정렬
  */
@@ -79,10 +74,8 @@ function sortBusker(date) {
 }
 document.addEventListener("DOMContentLoaded", async function () {
     
-
     getJson().then((buskerList) => {
         displayList(buskerList);
-        console.log(buskerList);
     });
     
     document.getElementById('inputDate').valueAsDate = new Date();
