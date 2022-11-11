@@ -43,8 +43,15 @@
     <main class="bk-buskerList">
         <h1 class="bk-buskerList__tit"><img src="assets/img/logo_busking.png" alt="BUSKINGPlay"></h1>
         <section class="bk-buskerList__date">
-            <label class="bk-buskerList__label" for="inputDate">Select Date</label>
-            <input type="date" class="bk-buskerList__input" id="inputDate" value="2022-10-01" onchange="sortBusker(this.value)">
+            <div class="bk-buskerList__selectWrap">
+                <select name="" id="buskerYears" class="bk-buskerList__select" value="">
+                </select>
+            </div>
+            <div class="bk-buskerList__selectWrap">
+                <select name="" id="buskerMonth" class="bk-buskerList__select" value="">
+                    <option value="ALL">전체</option>
+                </select>
+            </div>            
         </section>
         <ul class="bk-buskerList__container">
             

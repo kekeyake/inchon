@@ -5,7 +5,43 @@
 function fnCloseWindow() {
     window.close();
 }
+/**
+ * 동적으로 년도 append 
+ */ 
+ function creatYearOption(selectId){
+	var select = document.getElementById(selectId);
 
+    var date = new Date();
+    var year = date.getFullYear();
+    var idx = 0;
+    
+    for(var i=year-5; i<=year; i++){
+        const elOption = document.createElement('option');
+        elOption.value = i;
+        elOption.text = i+"년";        
+        select.prepend(elOption);
+        idx++;
+    }
+    select.childNodes[0].selected = true;
+}
+
+/**
+ * 동적으로 월 생성
+ * buskerMonth
+ */
+ function creatMonthOption(selectId){
+	var select = document.getElementById(selectId);
+    var idx = 0;
+    
+    for(var i=1; i<13; i++){
+        const elOption = document.createElement('option');
+        elOption.value = i;
+        elOption.text = i+"월";        
+        select.append(elOption);
+        idx++;
+    }
+    select.childNodes[0].selected = true;
+}
 /**
  * 버스커리스트 가져오기
  * @returns 
@@ -21,21 +57,43 @@ function getJson() {
  * 
  */
 function displayList(buskerList) {
+    let bkDate = new Date();
+    var current_year = bkDate.getFullYear().toString();
     const container = document.querySelector(".bk-buskerList__container");
-    container.innerHTML = buskerList.map((item) => createHTMLString(item)).join("");
+    let filterBuskerList = buskerList.filter(item => item.year === current_year);
+    container.innerHTML = filterBuskerList.map((item) => createHTMLString(item)).join("");
 }
 
 /**
- * 버스커리스트 날짜별 화면에 보여주기
+ * 버스커리스트 연도별 화면에 보여주기
  * 
  */
- function displayListSort(buskerList, thisDate) {
+ function displayListSortYears(buskerList, thisDate) {
     const container = document.querySelector(".bk-buskerList__container");
-
-    let filterBuskerList = buskerList.filter(item => item.id === thisDate);
+    let monthSelect = document.getElementById("buskerMonth");
+    monthSelect.value = "ALL";
+    
+    let filterBuskerList = buskerList.filter(item => item.year === thisDate);
     if(filterBuskerList.length < 1) {
         container.classList.add('no-data');
-        container.innerHTML ='<li class="bk-buskerList__item">해당 날짜에 공연이 없습니다.</li>';
+        container.innerHTML ='<li class="bk-buskerList__item">해당년에는 공연이 없습니다.</li>';                
+        return;       
+    }    
+    container.innerHTML = filterBuskerList.map((item) => createHTMLString(item)).join("");
+    container.classList.remove('no-data');
+}
+
+/**
+ * 버스커리스트 월별 화면에 보여주기
+ * 
+ */
+ function displayListSortMonth(buskerList, thisDate) {
+    const container = document.querySelector(".bk-buskerList__container");
+    let filterBuskerList = buskerList.filter(item => item.month === thisDate);
+
+    if(filterBuskerList.length < 1) {
+        container.classList.add('no-data');
+        container.innerHTML ='<li class="bk-buskerList__item">해당월에는 공연이 없습니다.</li>';
         return;
        
     }
@@ -64,20 +122,51 @@ function createHTMLString(item) {
 }
 
 /**
- * 날짜별 공연 정렬
+ * 년도 공연 정렬
  */
-function sortBusker(date) {
-    let thisDate = date;
+function sortBuskerYears(date) {
+    let thisDate = date;    
     getJson().then((buskerList) => {
-        displayListSort(buskerList, thisDate);
+        displayListSortYears(buskerList, thisDate);
     });
 }
+/**
+ * 년도 공연 정렬
+ */
+ function sortBuskerMonth(date,year) {
+    let thisDate = date;
+    let thisYear = year;
+    if (thisDate === "ALL" && thisYear === "2022") {
+        getJson().then((buskerList) => {
+            displayList(buskerList);
+        });
+        return;
+    }
+    
+    getJson().then((buskerList) => {
+        displayListSortMonth(buskerList, thisDate);
+    });
+}
+
+
+
 document.addEventListener("DOMContentLoaded", async function () {
     
+    // json parser
     getJson().then((buskerList) => {
         displayList(buskerList);
     });
-    
-    document.getElementById('inputDate').valueAsDate = new Date();
 
+    // select 초기화
+    creatYearOption('buskerYears');
+    creatMonthOption('buskerMonth');
+
+    const yearSelet = document.querySelector("#buskerYears");
+    const monthSelet = document.querySelector("#buskerMonth");
+    yearSelet.addEventListener('change',function(){
+        sortBuskerYears(this.value);
+    });
+    monthSelet.addEventListener('change',function(){
+        sortBuskerMonth(this.value,yearSelet.value);
+    });
 });
