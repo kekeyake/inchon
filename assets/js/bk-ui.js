@@ -20,17 +20,9 @@ function getJson() {
  * 버스커리스트 화면에 보여주기
  * 
  */
-function displayList(buskerList, thisDate) {
+function displayList(buskerList) {
     const container = document.querySelector(".bk-buskerList__container");
-    container.innerHTML = buskerList.map((item) => {
-        if (!thisDate)
-            return createHTMLString(item);
-        if (item.id === thisDate)
-            return createHTMLString(item);
-        return `
-        <li class="bk-buskerList__item">해당일은 공연이 없습니다.</li>
-        `;
-    }).join("");
+    container.innerHTML = buskerList.map((item) => createHTMLString(item)).join("");
 }
 
 /**
@@ -39,12 +31,11 @@ function displayList(buskerList, thisDate) {
  */
  function displayListSort(buskerList, thisDate) {
     const container = document.querySelector(".bk-buskerList__container");
-    container.innerHTML = buskerList.map((item) => {
-        if (!thisDate)
-            return createHTMLString(item);
+    
+    container.innerHTML = buskerList.map((item) => {        
         if (item.id === thisDate)
             return createHTMLString(item);
-        return ``;
+        return ;
     }).join("");
 }
 
@@ -79,9 +70,8 @@ function createHTMLString(item) {
 function sortBusker(date) {
     let thisDate = date;
     getJson().then((buskerList) => {
-        displayList(buskerList,thisDate);
+        displayListSort(buskerList,thisDate);
     });
-    console.log(thisDate);
     // const container = document.querySelector(".bk-buskerList__container");
     // container.innerHTML ='<li class="bk-buskerList__item">해당 날짜에 공연이 없습니다.</li>';
     // container.classList.add('no-data');
